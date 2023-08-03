@@ -1,7 +1,8 @@
 import HomeButton from "../components/HomeButton"
 import HomeParagraph from "../components/HomeParagraph"
 import HomeTitle from "../components/HomeTitle"
-
+import Carousel from "../components/Carousel"
+import Arrow from "../components/Arrow"
 export default function Home() {
     let data = [
         { id: 'america1', city: "Cancun", photo: "/img/america/cancun.jpg" },
@@ -22,18 +23,33 @@ export default function Home() {
         { id: 'oceania4', city: "Wellington", photo: "/img/oceania/wellington.jpg" }
     ]
     return (
-        <div className="pt-[200px] flex center justify-between ">
-            
-                <div className="flex flex-col justify-center w-[850px] items-start gap-[40px]; ">
-                    <HomeTitle />
-                    <HomeParagraph />
-                    <HomeButton />
+        <div className="pt-[70px] flex flex-row ">
+            <div className="flex flex-col justify-center w-[400px] items-start gap-[40px]; ">
+                <HomeTitle />
+                <HomeParagraph />
+                <HomeButton />
+                 </div>
+                <div className="flex justify-center items-center pl-[120px] w-[1600px] grid-cols-2 flex-wrap my-5 mx-3 ">
+                <button onClick={() => alert("hola")}>
+                    <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5"/>
+                    </button>
+                    <div className=" w-10/12 flex flex-wrap justify-center  content-center ">
+                        {data.slice([0], [4]).map((each, index) => (
+                            <Carousel
+                                key={index}
+                                src={each.photo}
+                                alt={each.id}
+                                text={each.city}
+                            />
+                        ))}
+                    </div>
+                    <button onClick={() => alert("hola")}>
+                    <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" 
+                    />
+
+                    </button>
                 </div>
-                <div className="">
-                <img src={data[1].photo} alt={data[1].id} />
-                <p className="text-[20px] ">{data[1].city } </p>
-            </div>
-            
+           
         </div>
 
     )
