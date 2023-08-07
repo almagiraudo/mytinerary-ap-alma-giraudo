@@ -37,6 +37,7 @@ export default function Home() {
         },  
         []     
         )*/}
+
     return (
         <div className="pt-[70px] flex flex-row ">
             <div className="flex flex-col justify-center w-[400px] items-start gap-[40px]; ">
@@ -44,6 +45,7 @@ export default function Home() {
                 <HomeParagraph />
                 <HomeButton />
                  </div>
+
                 <div className="flex justify-center items-center pl-[120px] w-[1600px] grid-cols-2 flex-wrap my-5 mx-3 sm: ">
                     <div className=" w-10/12 flex flex-wrap justify-center  content-center ">
                    {/*  {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
@@ -51,6 +53,7 @@ export default function Home() {
                     {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white" >click arriba para ver carousel</h1>}
     */}            <Carousel data={datos} /> 
                     </div>
+
                 </div>
            
         </div>
