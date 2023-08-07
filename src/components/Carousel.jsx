@@ -1,36 +1,54 @@
 import Arrow from "./Arrow";
-export default function Carrussel({ src, alt, text }) {
+import Card from "./Card";
+import { useState } from "react";
 
-  const d_left = "M15.75 19.5L8.25 12l7.5-7.5";
-  const d_right = "M8.25 4.5l7.5 7.5-7.5 7.5";
-  const data = [
-    { id: 'america1', city: "Cancun", photo: "/img/america/cancun.jpg" },
-    { id: 'america2', city: "New York", photo: "/img/america/newyork.jpg" },
-    { id: 'america3', city: "Rio de Janeiro", photo: "/img/america/rioDeJaneiro.jpg" },
-    { id: 'america4', city: "Ushuaia", photo: "/img/america/ushuaia.jpg" },
-    { id: 'asia1', city: "Bangkok", photo: "/img/asia/bangkok.jpg" },
-    { id: 'asia2', city: "Pekin", photo: "/img/asia/pekin.jpg" },
-    { id: 'asia3', city: "Singapur", photo: "/img/asia/singapur.jpg" },
-    { id: 'asia4', city: "Tokyo", photo: "/img/asia/tokio.jpg" },
-    { id: 'europe1', city: "Ibiza", photo: "/img/europe/ibiza.jpg" },
-    { id: 'europe2', city: "London", photo: "/img/europe/london.jpg" },
-    { id: 'europe3', city: "Paris", photo: "/img/europe/paris.jpg" },
-    { id: 'europe4', city: "Roma", photo: "/img/europe/roma.jpg" },
-    { id: 'oceania1', city: "Majuro", photo: "/img/oceania/majuro.jpg" },
-    { id: 'oceania2', city: "Sidney", photo: "/img/oceania/sidney.jpg" },
-    { id: 'oceania3', city: "Suva", photo: "/img/oceania/suva.jpg" },
-    { id: 'oceania4', city: "Wellington", photo: "/img/oceania/wellington.jpg" }
-  ]
+
+export default function Carousel({ data }) {
+ let [counter, setCounter]= useState(0);
+ let[counterTo, setCounterTo]= useState(4);
+
+  function next_slide(){
+    if(counterTo >= data.length){
+      setCounter(0)
+      setCounterTo(4)
+    }else{
+      setCounter(counter+4)
+      setCounterTo(counterTo+4)
+    }
+      console.log(counter)
+      console.log(counterTo)
+      console.log(data.length)
+  }
+
+  function prev_slide(){
+    if(counter <=0 ){
+      setCounter( data.length-4)
+      setCounterTo(data.length)
+    }else{
+      setCounter(counter-4)
+      setCounterTo(counterTo-4)
+    }
+    console.log(counter)
+      console.log(counterTo)
+  }
   return (
-    <div>
-
-      <div className="flex w-[250px] flex-col  rounded-xl  shadow items-center m-1 p-2 mt-5 ">
-
-        <img className="" src={src} alt={alt} />
-        <p className="text-[20px] text-center">{text}</p>
-
+    <div className="flex justify-center items-center">
+<Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide}/>
+      <div className="flex flex-wrap place-content-center rounded-xl  items-center m-1 p-2 mt-5 ">
+      {data.slice(counter, counterTo).map((each, index) => (
+          <Card
+            key={index}
+            src={each.photo}
+            alt={each.id}
+            text={each.city}
+            id={each.id}
+          />
+        ))}
       </div>
+      <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" onClick={next_slide}/>
     </div>
+    
+
 
   )
 }

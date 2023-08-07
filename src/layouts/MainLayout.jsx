@@ -1,10 +1,14 @@
 import Home from "../pages/Home"
 import NavLayout from "./NavLayout"
-export default function MainLayout({children}) {
+import { Outlet } from "react-router-dom"
+
+
+export default function MainLayout() {
   return (
     <div className="px-[50px] pb-[399px] ">
       <NavLayout/>
-      {children}
+      <Outlet/>
+
       <Home/> 
       
       </div>
