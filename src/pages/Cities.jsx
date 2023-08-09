@@ -2,7 +2,7 @@
 
 export default function Cities() {
   return (
-    <div>
+    <div className="text-black">
        <p>Page Cities under construction</p>
     </div>
   )

@@ -15,9 +15,9 @@ export default function HambMenu() {
   </svg>
   { isOpen ?(
     <div className="flex flex-col justify-between gap-3 rounded-lg shadow-md p-5 absolute w-[100px] right-[50px] mt-5 items-center bg-slate-400 md:hidden">
-     <Anchor to='/'><button className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Home</button></Anchor>
-     <Anchor to='/nav/cities'><button className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Cities</button></Anchor>
-     <Anchor to='/nav/login'><button className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</button></Anchor>
+     <Anchor to='/' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Home</Anchor>
+     <Anchor to='/nav/cities' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Cities</Anchor>
+     <Anchor to='/nav/login' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</Anchor>
     </div>)
     :(null)
   }
