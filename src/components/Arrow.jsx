@@ -1,5 +1,7 @@
+
 //import { Link as Ancor} from "react-router-dom";
 export default function Arrow({ direction, onClick }) {
+
     return (
      
       <svg
@@ -10,6 +12,7 @@ export default function Arrow({ direction, onClick }) {
         stroke="currentColor"
         className="text-black w-[20px] h-[20px] cursor-pointer"
         onClick={onClick}>
+
         <path strokeLinecap="round" strokeLinejoin="round" d={direction} />
       </svg>
     );

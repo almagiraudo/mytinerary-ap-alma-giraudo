@@ -2,6 +2,7 @@
 
 export default function Card({src, alt, text}) {
   return (
+
     <div className="">
       
       <div className="flex w-[270px]  rounded-xl shadow items-start  ">
@@ -11,5 +12,6 @@ export default function Card({src, alt, text}) {
         View More</button>
       </div>
       </div>
+
   )
 }

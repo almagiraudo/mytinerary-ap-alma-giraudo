@@ -1,17 +1,21 @@
 
+
 import Carousel from "../components/Carousel"
 //import axios from "axios"
 import { useState } from "react"
+
 
 
 export default function Home() {
 
     const [show, setShow] = useState(true)
     const [data, setData] = useState([])
+
     let datos = [
         { "id": "am1", "city": "Cancun", "photo": "/img/america/cancun.jpg" },
         { "id": "am2", "city": "New York", "photo": "/img/america/newyork.jpg" },
         { "id": "am3", "city": "Rio de Janeiro", "photo": "/img/america/rioDeJaneiro.jpg" },
+
         { "id": "am4", "city": "Ushuaia", "photo": "/img/america/ushuaia.jpg" },
         { "id": "as1", "city": "Bangkok", "photo": "/img/asia/bangkok.jpg" },
         { "id": "as2", "city": "Pekin", "photo": "/img/asia/pekin.jpg" },
@@ -54,6 +58,7 @@ export default function Home() {
                     <Carousel data={datos} />
                 </div>
             </div>
+
 
         </div>
 

@@ -8,6 +8,7 @@ export default function MainLayout() {
     <div className="px-[50px] pb-[399px] ">
       <NavLayout/>
       <Outlet/>
+
       <Home/> 
       
       </div>
