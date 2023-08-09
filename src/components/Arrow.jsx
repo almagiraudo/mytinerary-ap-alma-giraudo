@@ -12,7 +12,6 @@ export default function Arrow({ direction, onClick }) {
         stroke="currentColor"
         className="text-black w-[20px] h-[20px] cursor-pointer"
         onClick={onClick}>
-
         <path strokeLinecap="round" strokeLinejoin="round" d={direction} />
       </svg>
     );

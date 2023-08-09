@@ -1,8 +1,6 @@
 
 import { Link as Anchor } from "react-router-dom";
 import HambMenu from "./HambMenu";
-
-
 export default function NavBar() {
     const name = 'My Tinerary';
     const home = 'Home';
