@@ -2,14 +2,14 @@
 
 export default function Card({src, alt, text}) {
   return (
-    <div>
+    <div className="">
       
-      <div className="flex w-[250px] flex-col  rounded-xl  shadow items-center m-1 p-2 mt-5 ">
-        <p className="text-[20px] text-center">{text}</p>
-        <img className="" src={src} alt={alt} />
-        <button className="rounded-xl text-center w-[40px] bg-indigo-700 text-white text-smS ">View More</button>
-
+      <div className="flex w-[270px]  rounded-xl shadow items-start  ">
+        <button className="rounded-xl  bg-indigo-700 text-white text-md text-center flex-col items-center cursor-pointer ">
+        <img className="bg-origin-border rounded-xl" src={src} alt={alt} />
+        <p className=" flex w-[140px] h-[20px] pb-7 text-center justify-between text-xl text-white ">{text}</p>
+        View More</button>
       </div>
-    </div>
+      </div>
   )
 }

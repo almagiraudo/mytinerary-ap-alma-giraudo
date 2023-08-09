@@ -32,9 +32,9 @@ export default function Carousel({ data }) {
       console.log(counterTo)
   }
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center  ">
 <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide}/>
-      <div className="flex flex-wrap place-content-center rounded-xl  items-center m-1 p-2 mt-5 ">
+      <div className="flex rounded-xl gap-5    ">
       {data.slice(counter, counterTo).map((each, index) => (
           <Card
             key={index}
