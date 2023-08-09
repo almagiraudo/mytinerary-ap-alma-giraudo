@@ -4,14 +4,17 @@ import Carousel from "../components/Carousel"
 import { useState } from "react"
 
 
+
 export default function Home() {
 
     const [show, setShow] = useState(true)
     const [data, setData] = useState([])
+
     let datos = [
         { "id": "am1", "city": "Cancun", "photo": "/img/america/cancun.jpg" },
         { "id": "am2", "city": "New York", "photo": "/img/america/newyork.jpg" },
         { "id": "am3", "city": "Rio de Janeiro", "photo": "/img/america/rioDeJaneiro.jpg" },
+
         { "id": "am4", "city": "Ushuaia", "photo": "/img/america/ushuaia.jpg" },
         { "id": "as1", "city": "Bangkok", "photo": "/img/asia/bangkok.jpg" },
         { "id": "as2", "city": "Pekin", "photo": "/img/asia/pekin.jpg" },
@@ -28,8 +31,10 @@ export default function Home() {
     ]
 
     return (
+
         <div className="flex flex-wrap xl:flex-nowrap lg:flex-wrap pt-[30px] md:pt-[70px]  ">
             <div className="flex flex-col justify-center items-start  lg:w-3/5 ; ">
+
                 {/*title */}
                 <div className="text-3xl not-italic font-sans  leading-normal;">
                     <h1>Find the perfect destination</h1>
@@ -49,8 +54,10 @@ export default function Home() {
                     <button>View More</button>
                 </div>
             </div>
-            <div className="flex flex-wrap  items-center pl-[100px] my-5 mx-3  ">
+
+            <div className="flex flex-wrap justify-center  items-center pl-[100px] my-5 mx-3  ">
                 <div className="flex justify-center content-center ">
+
                     <Carousel data={datos} />
                 </div>
             </div>
