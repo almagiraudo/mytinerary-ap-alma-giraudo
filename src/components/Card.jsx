@@ -11,5 +11,6 @@ export default function Card({src, alt, text}) {
         View More</button>
       </div>
       </div>
+
   )
 }

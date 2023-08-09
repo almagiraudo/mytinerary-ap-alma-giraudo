@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Cities from "./pages/Cities";
 import CitiesDetail from "./pages/CitiesDetail";
+
 import NavLayout from "./layouts/NavLayout";
 
 const router = createBrowserRouter([
@@ -25,4 +26,6 @@ const router = createBrowserRouter([
     }
 ])
 
+
 export default router
+
