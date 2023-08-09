@@ -1,5 +1,6 @@
 
 import { Link as Anchor } from "react-router-dom";
+import HambMenu from "./HambMenu";
 
 
 export default function NavBar() {
@@ -8,20 +9,20 @@ export default function NavBar() {
     const cities = 'Cities';
     const login ='Login';
     return (
-        <nav className="flex justify-between pt-[32px] items-center">
+        <nav className="flex justify-between pt-[32px] items-center ">
             <header className="text-3xl not-italic font-bold;">
                 <p >{`${name}`}</p>
             </header>
-            <div className='pl-3' >
-                <div className="text-2xl not-italic font-bold;">
-                    <button className="pr-4">{`${home}`}</button>
-                    <button className="pr-4">{`${cities}`}</button>
-
-                    <button className="px-2 w-[150px]  content-center justify-center border-solid border-2 border-indigo-700 bg-indigo-700 text-white rounded ;">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="flex object-left  w-6 h-6">
-                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                    </svg>
-                     {`${login}`}</button>
+            <div><HambMenu /></div>
+            <div className='pl-3 hidden md:flex' >
+                <div className="flex text-2xl not-italic  font-bold;">
+                    <Anchor to='/'><button className="pr-4"> {`${home}`}</button></Anchor>
+                    <Anchor to='/nav/cities'><button className="pr-4">{`${cities}`}</button></Anchor>
+                    <Anchor to='/nav/login'><button className=" flex flex-row text-2xl py-3 px-8 leading-normal items-center bg-indigo-700 text-white rounded-[10px] gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none" >
+                        <path d="M13.7813 5C13.7813 6.72589 12.3122 8.125 10.5 8.125C8.68783 8.125 7.21876 6.72589 7.21876 5C7.21876 3.27411 8.68783 1.875 10.5 1.875C12.3122 1.875 13.7813 3.27411 13.7813 5Z" fill="white" />
+                        <path d="M3.93851 16.7652C4.00002 13.3641 6.91415 10.625 10.5 10.625C14.086 10.625 17.0001 13.3642 17.0615 16.7654C15.0641 17.6383 12.8419 18.125 10.5003 18.125C8.15851 18.125 5.9361 17.6383 3.93851 16.7652Z" fill="white" />
+                    </svg>{`${login}`}</button></Anchor>
 
                 </div>
             </div>

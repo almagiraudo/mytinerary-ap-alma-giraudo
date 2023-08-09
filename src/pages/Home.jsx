@@ -1,19 +1,21 @@
-import HomeButton from "../components/HomeButton"
-import HomeParagraph from "../components/HomeParagraph"
-import HomeTitle from "../components/HomeTitle"
+
+
 import Carousel from "../components/Carousel"
 //import axios from "axios"
-import { useState } from "react"    
+import { useState } from "react"
+
 
 
 export default function Home() {
 
     const [show, setShow] = useState(true)
     const [data, setData] = useState([])
-    let datos= [
+
+    let datos = [
         { "id": "am1", "city": "Cancun", "photo": "/img/america/cancun.jpg" },
         { "id": "am2", "city": "New York", "photo": "/img/america/newyork.jpg" },
-        { "id": "am3", "city": "Rio de Janeiro", "photo": "/img/america/rioDeJaneiro.jpg"},
+        { "id": "am3", "city": "Rio de Janeiro", "photo": "/img/america/rioDeJaneiro.jpg" },
+
         { "id": "am4", "city": "Ushuaia", "photo": "/img/america/ushuaia.jpg" },
         { "id": "as1", "city": "Bangkok", "photo": "/img/asia/bangkok.jpg" },
         { "id": "as2", "city": "Pekin", "photo": "/img/asia/pekin.jpg" },
@@ -29,33 +31,35 @@ export default function Home() {
         { "id": "oc4", "city": "Wellington", "photo": "/img/oceania/wellington.jpg" }
     ]
 
- {/*  useEffect(
-        ()=>{
-          axios('public/data.js')
-            .then(res=>setData(res.data))
-            .catch(err=>console.log(err))
-        },  
-        []     
-        )*/}
-
     return (
-        <div className="pt-[70px] flex flex-row ">
-            <div className="flex flex-col justify-center w-[400px] items-start gap-[40px]; ">
-                <HomeTitle />
-                <HomeParagraph />
-                <HomeButton />
-                 </div>
-
-                <div className="flex justify-center items-center pl-[120px] w-[1600px] grid-cols-2 flex-wrap my-5 mx-3 sm: ">
-                    <div className=" w-10/12 flex flex-wrap justify-center  content-center ">
-                   {/*  {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
-
-                    {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white" >click arriba para ver carousel</h1>}
-    */}            <Carousel data={datos} /> 
-                    </div>
-
+        <div className="flex flex-wrap pt-[30px] md:pt-[70px]  xl:flex-nowrap  ">
+            <div className="flex flex-col justify-center items-start  lg:w-4/5 lg:flex-col ; ">
+                {/*title */}
+                <div className="text-3xl not-italic font-sans  leading-normal;">
+                    <h1>Find the perfect destination</h1>
                 </div>
-           
+                {/*Paragraph */}
+                <div className="pt-[40px] py-[40px]  w-[742px]; ">
+                    <p className=" w-[600px]  not-italic font-normal leading-normal text-base text-left; ">Our app will help you find the perfect path for your next trip.
+                        With an easy-to-use interface and a host of itinerary options,
+                        planning your next trip has never been easier.</p>
+                </div>
+                {/*Button */}
+                <div className=" bg-indigo-700 rounded-lg
+                        border-indigo-700 container  
+                        flex justify-center items-center  
+                        w-[200px] h-[5px] px-[16px] py-[20px] 
+                        box-content text-white ; ">
+                    <button>View More</button>
+                </div>
+            </div>
+            <div className="flex flex-col justify-center items-center pl-[100px] w-[400px] md:flex-col  lg:flex-nowrap xl:flex-nowrap  xl:w-[1600px] my-5 mx-3  ">
+                <div className=" md:w-12/12 flex justify-center  content-center ">
+                    <Carousel data={datos} />
+                </div>
+            </div>
+
+
         </div>
 
     )

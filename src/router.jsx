@@ -4,20 +4,26 @@ import MainLayout from "./layouts/MainLayout";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Cities from "./pages/Cities";
-import CitiesDetail from "./pages/CitiesDetail";
+import CitiesDetail from "./pages/CitiesDetail"
+import NavLayout from "./layouts/NavLayout";
 
 const router = createBrowserRouter([
-    {path: '/',
-     element: <MainLayout/>,
-    children:[
-        {path: '/', element:<Home/>},
-        {path: "/index", element:<Home/>},
-        {path: "/home", element:<Home/>},
-        {path: "/signin", element:<SignIn/>},
-        {path: "/signup", element:<SignUp/>},
-        {path: "/cities", element:<Cities/>},
-        {path: "/citiesdetail", element:<CitiesDetail/>}
+    {
+        path: '/',
+        element: <MainLayout />,
+    },
+    {
+        path: '/nav',
+        element: <NavLayout />,
+        children: [
+            { path: "/nav/signin", element: <SignIn /> },
+            { path: "/nav/signup", element: <SignUp /> },
+            { path: "/nav/cities", element: <Cities /> },
+            { path: "/nav/citiesdetail", element: <CitiesDetail /> }
+        ]
 
-    ]    
     }
 ])
+
+export default router
+
