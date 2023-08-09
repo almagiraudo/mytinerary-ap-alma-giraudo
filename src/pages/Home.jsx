@@ -28,8 +28,8 @@ export default function Home() {
     ]
 
     return (
-        <div className="flex flex-wrap pt-[30px] md:pt-[70px]  xl:flex-nowrap  ">
-            <div className="flex flex-col justify-center items-start  lg:w-4/5 lg:flex-col ; ">
+        <div className="flex flex-wrap xl:flex-nowrap lg:flex-wrap pt-[30px] md:pt-[70px]  ">
+            <div className="flex flex-col justify-center items-start  lg:w-3/5 ; ">
                 {/*title */}
                 <div className="text-3xl not-italic font-sans  leading-normal;">
                     <h1>Find the perfect destination</h1>
@@ -49,8 +49,8 @@ export default function Home() {
                     <button>View More</button>
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center pl-[100px] w-[400px] md:flex-col  lg:flex-nowrap xl:flex-nowrap  xl:w-[1600px] my-5 mx-3  ">
-                <div className=" md:w-12/12 flex justify-center  content-center ">
+            <div className="flex flex-wrap justify-center  items-center pl-[100px] my-5 mx-3  ">
+                <div className="flex justify-center content-center ">
                     <Carousel data={datos} />
                 </div>
             </div>
