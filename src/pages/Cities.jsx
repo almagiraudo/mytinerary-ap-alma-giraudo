@@ -1,4 +1,6 @@
+
 import NavBar from "../components/NavBar";
+
 
 
 export default function Cities() {
@@ -6,6 +8,7 @@ export default function Cities() {
     <>
     <NavBar/>
     <div className="text-black pt-[100px] ">
+
        <p>Page Cities under construction</p>
     </div>
     </>
