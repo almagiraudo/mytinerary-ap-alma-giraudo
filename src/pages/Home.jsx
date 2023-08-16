@@ -1,5 +1,6 @@
 
 import Carousel from "../components/Carousel"
+import Footer from "../components/Footer"
 //import axios from "axios"
 import { useState } from "react"
 
@@ -32,8 +33,8 @@ export default function Home() {
 
     return (
 
-        <div className="flex flex-wrap xl:flex-nowrap lg:flex-wrap pt-[30px] md:pt-[70px]  ">
-            <div className="flex flex-col justify-center items-start  lg:w-3/5 ; ">
+        <div className="flex flex-wrap gap-7 xl:flex-nowrap lg:flex-wrap  pt-[30px] md:pt-[70px]  ">
+            <div className="flex flex-col justify-center items-start lg:w-3/5 xl:w-2/5 ; ">
 
                 {/*title */}
                 <div className="text-3xl not-italic font-sans  leading-normal;">
@@ -41,7 +42,7 @@ export default function Home() {
                 </div>
                 {/*Paragraph */}
                 <div className="pt-[40px] py-[40px]  w-[742px]; ">
-                    <p className=" w-[600px]  not-italic font-normal leading-normal text-base text-left; ">Our app will help you find the perfect path for your next trip.
+                    <p className=" w-[600px]   xl:w-[400px] text-justify not-italic font-normal leading-normal text-base text-left; ">Our app will help you find the perfect path for your next trip.
                         With an easy-to-use interface and a host of itinerary options,
                         planning your next trip has never been easier.</p>
                 </div>
@@ -55,12 +56,12 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="flex flex-wrap justify-center  items-center pl-[100px] my-5 mx-3  ">
+            <div className="flex flex-wrap justify-center  items-center  my-5 mx-3  ">
                 <div className="flex justify-center content-center ">
-
-                    <Carousel data={datos} />
+                 <Carousel data={datos} />
                 </div>
             </div>
+           
 
         </div>
 
