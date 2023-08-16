@@ -1,5 +1,6 @@
 
 import Carousel from "../components/Carousel"
+import Footer from "../components/Footer"
 //import axios from "axios"
 import { useState } from "react"
 
@@ -60,6 +61,7 @@ export default function Home() {
                  <Carousel data={datos} />
                 </div>
             </div>
+           
 
         </div>
 

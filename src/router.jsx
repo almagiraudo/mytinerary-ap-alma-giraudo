@@ -11,7 +11,10 @@ import NavLayout from "./layouts/NavLayout";
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <MainLayout />
+        element: <MainLayout />,
+        children:[
+            {path: "/", element: <Home/>}
+        ]
     },
     {
         path: '/nav',
@@ -19,12 +22,12 @@ const router = createBrowserRouter([
         children: [
             { path: "/nav/login", element: <SignIn /> },
             { path: "/nav/signup", element: <SignUp /> },
-            { path: "/nav/citiesdetail", element: <CitiesDetail /> }
+            { path: "/nav/citiesdetail", element: <CitiesDetail/> }
         ]
 
     },
     {
-        path: '/cities',
+        path: '/nav/cities',
         element: <Cities/>
 
     }
