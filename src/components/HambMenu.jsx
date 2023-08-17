@@ -12,25 +12,11 @@ export default function HambMenu() {
   </svg>
   { isOpen ?(
     <div className="flex flex-col justify-between gap-3 rounded-lg shadow-md p-5 absolute w-[100px] right-[50px] mt-5 items-center bg-slate-400 md:hidden">
-<<<<<<< HEAD
-<<<<<<< HEAD
-     <Anchor to='/' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Home</Anchor>
-     <Anchor to='/cities' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Cities</Anchor>
-     <Anchor to='/nav/login' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</Anchor>
-=======
 
      <Anchor to='/' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Home</Anchor>
      <Anchor to='/cities' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Cities</Anchor>
      <Anchor to='/nav/login' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</Anchor>
 
->>>>>>> 82998d1056f2e5ee52fe3e6d4fece360f302f219
-=======
-
-     <Anchor to='/' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Home</Anchor>
-     <Anchor to='/cities' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Cities</Anchor>
-     <Anchor to='/nav/login' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</Anchor>
-
->>>>>>> 1f7ed237f4eb263da51f2a81f9ed2e619493329c
     </div>)
     :(null)
   }
