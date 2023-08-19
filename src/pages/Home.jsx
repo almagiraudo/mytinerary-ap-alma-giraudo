@@ -1,24 +1,14 @@
 
 import Carousel from "../components/Carousel"
-import Footer from "../components/Footer"
 import { useEffect, useState } from "react"
-import apiUrl from "../../apiUrl"
-import axios from "axios"
+
 
 
 
 export default function Home() {
 
     const [show, setShow] = useState(true)
-    const [data, setData] = useState([])
-useEffect(
-    ()=>{
-        axios(apiUrl+'cities/carousel')
-       // .then(res=> console.log(res.data.data_carousel))
-        .then(res=> setData(res.data.data_carousel))
-        .catch(err=>console.log(err))
-    }
-)
+   
 
     return (
 
@@ -47,12 +37,11 @@ useEffect(
 
             <div className="flex flex-wrap justify-center  items-center  my-5 mx-3  ">
                 <div className="flex justify-center content-center ">
-                 <Carousel data={datos} />
+                 <Carousel/>
                 </div>
             </div>
-           
-
         </div>
 
     )
+    
 }

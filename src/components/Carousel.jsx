@@ -1,11 +1,23 @@
 import Arrow from "./Arrow";
 import Card from "./Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import apiUrl from "../../apiUrl";
+import axios from "axios";
 
 
-export default function Carousel({ data }) {
+export default function Carousel() {
  let [counter, setCounter]= useState(0);
  let[counterTo, setCounterTo]= useState(4);
+ const [data, setData] = useState([]);
+
+ useEffect(
+     ()=>{
+         axios(apiUrl+'cities/carousel')
+        .then(res=> console.log(res.data.data_carousel))
+        .then(res=>setData(res.data.data_carousel))
+        .catch(err=>console.log(err))
+     }
+ )
 
   function next_slide(){
     if(counterTo >= data.length){

@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react"
 import { Link as Anchor } from "react-router-dom"
+import apiUrl from "../../apiUrl";
 
 export default function Card({src, alt, text}) {
+const [data, setData] = useState([]);
+  useEffect(()=>{
+    axios(apiUrl)
+    .then(res=>setData(res.data))
+    .catch(console.log(err))
+  },
+  [])
+
+
   return (
-    <div className="">
+    <div>
       
       <div className="flex w-[270px]  rounded-xl shadow items-start  ">
         <Anchor to = '/nav/citiesdetail'  className="rounded-xl  bg-indigo-700 text-white text-md text-center flex-col items-center cursor-pointer ">
@@ -13,4 +24,6 @@ export default function Card({src, alt, text}) {
       </div>
 
   )
-}
+ }
+
+
