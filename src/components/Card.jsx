@@ -1,18 +1,6 @@
-//import { useEffect, useState } from "react"
 import { Link as Anchor } from "react-router-dom"
-//import apiUrl from "../../apiUrl";
-//import axios from "axios";
 
 export default function Card({src, alt, text}) {
-{/*const [data, setData] = useState([]);
-  useEffect(()=>{
-    axios(apiUrl)
-    .then(res=>setData(res.data))
-    .catch(console.log(err))
-  },
-  [])*/}
-
-
   return (
     
       

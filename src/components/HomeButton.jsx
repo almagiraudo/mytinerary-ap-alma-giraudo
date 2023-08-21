@@ -1,5 +1,8 @@
+import  { Link as Anchor } from "react-router-dom"
+
+
 export default function HomeButton() {
-    return (
+    return (<Anchor to='/nav/cities'>
         <div className=" bg-indigo-700 rounded-lg
                         border-indigo-700 container  
                         flex justify-center items-center  
@@ -7,5 +10,6 @@ export default function HomeButton() {
                         box-content text-white ; ">
             <button>View More</button>
         </div>
+        </Anchor>
     )
 }

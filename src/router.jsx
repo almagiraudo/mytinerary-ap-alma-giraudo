@@ -7,6 +7,7 @@ import Cities from "./pages/Cities";
 import CitiesDetail from "./pages/CitiesDetail";
 
 import NavLayout from "./layouts/NavLayout";
+import HomeButton from "./components/HomeButton";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,6 @@ const router = createBrowserRouter([
         children: [
             { path: "/nav/login", element: <SignIn /> },
             { path: "/nav/signup", element: <SignUp /> },
-
             { path: "/nav/citiesdetail", element: <CitiesDetail/> }
 
         ]
@@ -30,9 +30,11 @@ const router = createBrowserRouter([
     {
 
         path: '/nav/cities',
-
-        element: <Cities/>
-
+        element: <Cities/>, 
+        children:[
+            {path:"/nav/cities", element: <HomeButton/>
+        }
+        ]
     }
 ])
 
