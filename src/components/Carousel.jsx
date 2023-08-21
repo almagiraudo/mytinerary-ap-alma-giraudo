@@ -1,23 +1,12 @@
 import Arrow from "./Arrow";
 import Card from "./Card";
 import { useState, useEffect } from "react";
-import apiUrl from "../../apiUrl";
-import axios from "axios";
 
 
-export default function Carousel() {
+
+export default function Carousel({data}) {
  let [counter, setCounter]= useState(0);
  let[counterTo, setCounterTo]= useState(4);
- const [data, setData] = useState([]);
-
- useEffect(
-     ()=>{
-         axios(apiUrl+'cities/carousel')
-        .then(res=> console.log(res.data.data_carousel))
-        .then(res=>setData(res.data.data_carousel))
-        .catch(err=>console.log(err))
-     }
- )
 
   function next_slide(){
     if(counterTo >= data.length){
@@ -47,7 +36,7 @@ export default function Carousel() {
 
     <div className="flex items-center ">
 <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide}/>
-      <div className="flex rounded-xl gap-7 flex-wrap justify-center  2xl:w-[700px]   ">
+      <div className="flex rounded-xl gap-7 flex-wrap justify-center  2xl:w-[900px]   ">
 
       {data.slice(counter, counterTo).map((each, index) => (
           <Card
