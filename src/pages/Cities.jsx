@@ -16,8 +16,9 @@ export default function Cities() {
     ()=> {
     axios(apiUrl+'cities?city='+text.current.value)  
         .then(res=>setCities(res.data.response))
-        .catch(err=>console.log(err)
-        )
+        .catch(err => {
+          setCities([])
+          console.log(err)})
           },[reEffect]
         )
 
@@ -34,13 +35,13 @@ export default function Cities() {
      ref={text}  onKeyUp={handleFilter}
       type="search" id="default-search" 
      placeholder="search for your destiny" 
-    className="flex border-solid text-center object-center
+    className="flex border-solid w-[300px] h-10 text-center object-center
      border-slate-500 bg-slate-300 rounded-lg  "
      
      />
     </div>
-     <div className="flex  flex-wrap gap-10 mt-10 ml-[90px] ">
-     {cities.length > 0 ?
+     <div className="flex justify-center flex-wrap gap-10 mt-10  ">
+     {cities.length != 0 ?
      cities.map(city=> (
       <Card key={city._id} text={city.city} src={city.photo} _id={city._id} />
     )) : 
