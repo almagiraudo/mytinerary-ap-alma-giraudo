@@ -13,8 +13,7 @@ export default function Cities() {
   
   useEffect(
     ()=> {
-    axios(apiUrl+'cities?city='+text.current.value
-    )  
+    axios(apiUrl+'cities?city='+text.current.value)  
         .then(res=>setCities(res.data.response))
         .catch(err=>console.log(err))
           },[reEffect]
@@ -41,7 +40,7 @@ export default function Cities() {
     </div>
      <div className="flex  flex-wrap gap-10 mt-10 ml-[90px] ">
      {cities.map(city=> (
-      <Card key={city._id} text={city.city} src={city.photo} />
+      <Card key={city._id} text={city.city} src={city.photo} _id={city._id} />
     ))}
     </div>
         
