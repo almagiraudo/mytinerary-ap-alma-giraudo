@@ -7,6 +7,7 @@ import Cities from "./pages/Cities";
 import CityDetail from "./pages/CityDetail";
 import NavLayout from "./layouts/NavLayout";
 import HomeButton from "./components/HomeButton";
+import FormSignUp from "./pages/FormSignUp";
 
 const router = createBrowserRouter([
     {
@@ -20,9 +21,8 @@ const router = createBrowserRouter([
         element: <NavLayout />,
         children: [
             { path: "/nav/login", element: <SignIn /> },
-            { path: "/nav/signup", element: <SignUp /> }
-           
-
+            { path: "/nav/signup", element: <SignUp /> },
+            {path: "/nav/auth/signup", element:<FormSignUp/>}
         ]
 
     },
