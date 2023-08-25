@@ -9,7 +9,7 @@ export default function NavBar() {
     return (
         <nav className="flex justify-between pt-[32px] items-center ">
             <header className="flex justify-between items-center font-sans text-3xl not-italic font-bold leading-normal gap-3">
-                <img className="pl-3" width="70" height="70" src="/planning.png" alt="" />
+                <img className="pl-3" width="70" height="70" src="/planning.ico" alt="" />
                 <p>{`${name}`}</p>
             </header>
             <div><HambMenu /></div>

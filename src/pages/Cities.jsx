@@ -5,21 +5,27 @@ import axios from "axios";
 import apiUrl from "../../apiUrl";
 import Card from "../components/Card";
 import CardError from "../components/CardError";
+import {useSelector, useDispatch} from 'react-redux';
+import city_actions from "../store/actions/cities";
+const {read_cities} = city_actions
 
 export default function Cities() {
-
-  const [cities, setCities] = useState([])
+  const cities = useSelector(stroe => stroe.cities.cities)
   const [reEffect, setReEffect] = useState(true)
   const text = useRef()
+  const dispatch = useDispatch()
+  console.log(cities)
 
   useEffect(
     () => {
-      axios(apiUrl + 'cities?city=' + text.current.value)
+      dispatch(read_cities({text:text.current?.value}))
+      /*
+        axios(apiUrl + 'cities?city=' + text.current.value)
         .then(res => setCities(res.data.response))
         .catch(err => {
-          setCities([])
-          console.log(err)
-        })
+        setCities([])
+        console.log(err)
+     */
     }, [reEffect]
   )
 
