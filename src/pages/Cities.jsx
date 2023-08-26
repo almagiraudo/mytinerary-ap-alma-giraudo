@@ -1,8 +1,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import NavBar from "../components/NavBar";
-import axios from "axios";
-import apiUrl from "../../apiUrl";
 import Card from "../components/Card";
 import CardError from "../components/CardError";
 import {useSelector, useDispatch} from 'react-redux';
@@ -19,13 +17,6 @@ export default function Cities() {
   useEffect(
     () => {
       dispatch(read_cities({text:text.current?.value}))
-      /*
-        axios(apiUrl + 'cities?city=' + text.current.value)
-        .then(res => setCities(res.data.response))
-        .catch(err => {
-        setCities([])
-        console.log(err)
-     */
     }, [reEffect]
   )
 

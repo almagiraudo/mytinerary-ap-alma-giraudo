@@ -1,10 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 import city_actions from "../actions/cities";
-const {read_carousel, read_cities} = city_actions
+const {read_carousel, read_cities, read_city} = city_actions
 
 const initial_state = {
     carousel : [],
-    cities: []
+    cities: [],
+    city: {}
 }
 
 const city_reducer = createReducer(
@@ -29,5 +30,16 @@ const city_reducer = createReducer(
             return new_state
         }
         )
+    .addCase(
+        read_city.fulfilled,
+        (state, action)=>{
+            let new_state = {
+                ...state,
+                cities: action.payload.city
+            }
+            return new_state
+        }
+        )
+    
 )
 export default city_reducer

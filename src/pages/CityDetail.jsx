@@ -1,26 +1,25 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
-import axios from "axios"
-import apiUrl from "../../apiUrl"
+import {useDispatch, useSelector} from 'react-redux'
+import city_actions from "../store/actions/cities"
 import NavBar from "../components/NavBar"
 import { Link as Anchor } from "react-router-dom"
 import Footer from "../components/Footer"
-
+const{read_city} = city_actions
 
 export default function CityDetail() {
   const { _id } = useParams()
-  const [city, setCity] = useState([])
+  const dispatch = useDispatch()
 
 
   useEffect(
     () => {
-      axios(apiUrl + 'cities/' + _id)
-        .then(res =>{setCity(res.data.response)
-           console.log(city)})
-        .catch(err => console.log(err))
+        dispatch(read_city({_id:_id}))
     }, []
   )
+  const city = useSelector(store => store.cities.city)
+  console.log(city);
 
 
   return (
@@ -38,7 +37,7 @@ export default function CityDetail() {
         <p className="text-black font-sans font-semibold mt-8 ml-5 ">{city.smalldescription}</p>
       </div>
       <Anchor to='/nav/cities'><button className="rounded-xl 
-     bg-indigo-700 text-white text-xl text-center
+         bg-indigo-700 text-white text-xl text-center
       items-center cursor-pointer w-[200px] h-10 mt-9 ml-10 ">Return</button></Anchor>
       <div className="text-black pt-[50px] ml-5 ">
         <p>Page Cities Detail under construction</p>
