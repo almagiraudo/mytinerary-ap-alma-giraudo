@@ -7,8 +7,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import city_actions from "../store/actions/cities";
 const {read_cities} = city_actions
 
-export default function Cities() {
-  const cities = useSelector(stroe => stroe.cities.cities)
+export default function Cities(props) {
+  console.log(props)
+  const cities = useSelector(store => store.cities.cities)
   const [reEffect, setReEffect] = useState(true)
   const text = useRef()
   const dispatch = useDispatch()
@@ -34,7 +35,7 @@ export default function Cities() {
           type="search" id="default-search"
           placeholder="search for your destiny"
           className="flex border-solid w-[300px] h-10 text-center object-center
-     border-slate-500 bg-slate-300 rounded-lg  "
+          border-slate-500 bg-slate-300 rounded-lg  "
 
         />
       </div>

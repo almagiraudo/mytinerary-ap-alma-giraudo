@@ -35,7 +35,7 @@ const city_reducer = createReducer(
         (state, action)=>{
             let new_state = {
                 ...state,
-                cities: action.payload.city
+                city: action.payload.city
             }
             return new_state
         }
