@@ -7,9 +7,9 @@ const read_users = createAsyncThunk(
     async()=>{
         try {
             let data = await axios(apiUrl + 'users')
-            console.log(data);
+            console.log(users.data.response);
             return{
-                users: data.data.data_users
+                users: users.data.response
             }
         } catch (error) {
             console.log(error);
