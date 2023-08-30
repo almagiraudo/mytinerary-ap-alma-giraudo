@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import itinerary_actions from "../actions/initenaries";
-const{read_initearies} = itinerary_actions
+import itinerary_actions from "../actions/itineraries";
+const{read_itineraries} = itinerary_actions
 
 const initial_state = {
     itineararies:[]
@@ -9,7 +9,7 @@ const initial_state = {
 const itinerary_reducer = createReducer(
     initial_state,
     builder => builder.addCase(
-    read_initearies.fulfilled,
+    read_itineraries.fulfilled,
     (state,action)=>{
         let new_state ={
             ...state,
@@ -19,4 +19,4 @@ const itinerary_reducer = createReducer(
     }
     )
 )
-export default itinerary_reducer
+export default itinerary_reducer 

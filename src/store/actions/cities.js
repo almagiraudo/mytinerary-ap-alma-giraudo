@@ -42,9 +42,9 @@ const read_cities = createAsyncThunk(
 
 const read_city = createAsyncThunk(
     'read_city',
-    async({id})=>{
-        try {  console.log(id)
-        let data = await axios.get(apiUrl+ 'cities/' + id)
+    async({_id})=>{
+        try {  
+        let data = await axios.get(apiUrl + 'cities/' + _id)
         console.log(data.data.response);
             return{
                 city: data.data.response

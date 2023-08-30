@@ -2,11 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiUrl from "../../../apiUrl";
 
-const read_initearies = createAsyncThunk(
-    'read_initearies',
-    async(obj)=>{
+const read_itineraries = createAsyncThunk(
+    'read_itineraries',
+    async({_id})=>{
         try {
-            let data = await axios(apiUrl + 'itineraries?city_id='+obj.city_id)
+            let data = await axios(apiUrl +'itineraries?city_id=' + _id)
             return{
                 itineraries: data.data.response
             }
@@ -19,5 +19,5 @@ const read_initearies = createAsyncThunk(
     }
 )
 
-const itinerary_actions = {read_initearies}
-export default itinerary_actions
+const itinerary_actions = {read_itineraries}
+export default itinerary_actions 
