@@ -41,9 +41,9 @@ console.log(store)
         <p className="text-black font-semibold mt-2 ">{city.smalldescription}</p>
         </div>
         <div className="shadow  rounded cursor-pointer px-4 font-bold bg-indigo-700 text-white text-xl text-center
-      items-center md:w-[200px] h-10 mt-9 ml-10 ">
+      items-center w-[200px] h-10 mt-9 ml-10 ">
         <span onClick={() => setShow(!show)} >
-        {show && itinerary.map(each =><p key={each._id}>View Itineraries</p>)} 
+        {show && itinerary.map(each =><p key={each._id}>View Itineraries </p>)} 
       </span>
       </div>
       </div> 
