@@ -1,25 +1,23 @@
 
 import { useEffect, useState, useRef } from "react";
 import NavBar from "../components/NavBar";
-import axios from "axios";
-import apiUrl from "../../apiUrl";
 import Card from "../components/Card";
 import CardError from "../components/CardError";
+import {useSelector, useDispatch} from 'react-redux';
+import city_actions from "../store/actions/cities";
+const {read_cities} = city_actions
 
-export default function Cities() {
-
-  const [cities, setCities] = useState([])
+export default function Cities(props) {
+  console.log(props)
+  const cities = useSelector(store => store.cities.cities)
   const [reEffect, setReEffect] = useState(true)
   const text = useRef()
+  const dispatch = useDispatch()
+  console.log(cities)
 
   useEffect(
     () => {
-      axios(apiUrl + 'cities?city=' + text.current.value)
-        .then(res => setCities(res.data.response))
-        .catch(err => {
-          setCities([])
-          console.log(err)
-        })
+      dispatch(read_cities({text:text.current?.value}))
     }, [reEffect]
   )
 
@@ -37,7 +35,7 @@ export default function Cities() {
           type="search" id="default-search"
           placeholder="search for your destiny"
           className="flex border-solid w-[300px] h-10 text-center object-center
-     border-slate-500 bg-slate-300 rounded-lg  "
+          border-slate-500 bg-slate-300 rounded-lg  "
 
         />
       </div>

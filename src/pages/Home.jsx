@@ -4,22 +4,27 @@ import { useEffect, useState } from "react"
 import apiUrl from "../../apiUrl";
 import axios from "axios";
 import { Link as Anchor } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+import city_actions from "../store/actions/cities";
+const{read_carousel} = city_actions
 
 export default function Home() {
 
 
     const [show, setShow] = useState(true)
     const [data, setData] = useState([]);
-
+    const city_reducer = useSelector(store=>store.cities)
+    //console.log(city_reducer)
+    const carousel = useSelector(store=> store.cities.carousel)
+    console.log(carousel)
+    const dispatch = useDispatch()
+    
     useEffect(
         () => {
-            axios(apiUrl + 'cities/carousel')
-                //.then(res=>{
-                //  console.log(res.data.data_carousel),
-                // console.log('estoy en home') })
-                .then(res => setData(res.data.data_carousel))
-                .catch(err => console.log(err))
-        }
+            
+            dispatch(read_carousel())
+        },
+        []
     )
 
 
@@ -50,7 +55,7 @@ export default function Home() {
 
             <div className="flex flex-wrap justify-center  items-center  md:my-5 md:mx-3  ">
                 <div className="flex justify-center content-center ">
-                    <Carousel data={data} />
+                    <Carousel data={carousel} />
                 </div>
             </div>
         </div>
