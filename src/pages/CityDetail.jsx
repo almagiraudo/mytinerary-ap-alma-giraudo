@@ -56,7 +56,6 @@ export default function CityDetail() {
         {showImages && (itinerary.map(each =>
           <Itinerary each={each}
             user={each.city_id.admin_id}
-
           />
         )
         )}
