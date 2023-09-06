@@ -4,7 +4,7 @@ const {read_user} =user_actions
 
 const initial_state = {
     users: []
-}
+};
 
 const user_reducer = createReducer(
     initial_state,
@@ -18,5 +18,5 @@ const user_reducer = createReducer(
             return new_state
         }
     )
-)
-export default user_reducer */
+);
+export default user_reducer  */

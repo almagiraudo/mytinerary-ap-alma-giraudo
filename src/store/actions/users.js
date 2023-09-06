@@ -6,7 +6,7 @@ const read_users = createAsyncThunk(
     'read_users',
     async()=>{
         try {
-            let data = await axios(apiUrl + 'users')
+            let users = await axios(apiUrl + 'users')
             console.log(users.data.response);
             return{
                 users: users.data.response
@@ -20,4 +20,4 @@ const read_users = createAsyncThunk(
     }
 )
 const user_actions = {read_users}
-export default user_actions */
+export default user_actions  */
