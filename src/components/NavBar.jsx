@@ -1,13 +1,17 @@
 
 import { Link as Anchor } from "react-router-dom";
 import HambMenu from "./HambMenu";
+import { useLocation } from "react-router-dom";
 export default function NavBar() {
     const name = 'My Tinerary';
     const home = 'Home';
     const cities = 'Cities';
     const login ='Login';
+    const location= useLocation();
+    const backgroundClass = location.pathname === '/' ? 'bg-white' : 'bg-image-url';
+    
     return (
-        <nav className="flex justify-between pt-[32px] items-center ">
+        <nav className={`flex justify-between pt-[32px] items-center ${backgroundClass}`}>
             <header className="flex justify-between items-center font-sans text-3xl not-italic font-bold leading-normal gap-3">
                 <img className="pl-3" width="70" height="70" src="/planning.ico" alt="" />
                 <p>{`${name}`}</p>

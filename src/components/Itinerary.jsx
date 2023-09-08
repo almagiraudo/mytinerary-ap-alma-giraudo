@@ -64,7 +64,7 @@ export default function Itinerary({ each, user }) {
                     <div className=" text-black text-center text-xl flex flex-row gap-6" key={each._id}>
                         <div className='flex flex-col gap-3'>
                             <p> User: {user.name} </p>
-                            <img src={user.photo} className='w-20 rounded-full ' />
+                            <img src={user.photo} className=' rounded-full w-[90px] h-[80px] ' />
                         </div>
                         <div className='flex flex-col'>
                             <p>Price:</p>
