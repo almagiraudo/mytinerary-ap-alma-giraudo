@@ -1,15 +1,25 @@
 import axios from 'axios';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import apiUrl from '../../apiUrl';
 import { Link as Anchor } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import user_actions from "../store/actions/users"
+const { read_users } = user_actions
 
 export default function FormSignUp() {
-    const name = useRef()
-    const lastName = useRef()
-    const country = useRef()
-    const photo = useRef()
-    const mail = useRef()
-    const password = useRef()
+    const name = useRef("")
+    const lastName = useRef("")
+    const country = useRef("")
+    const photo = useRef("")
+    const mail = useRef("")
+    const password = useRef("")
+    const [reload, setReload] = useState(false)
+    const dispatch = useDispatch()
+
+    useEffect(
+        () => { dispatch(read_users()) },
+        [reload]
+    )
 
     async function handleSignUp() {
         try {
@@ -21,10 +31,11 @@ export default function FormSignUp() {
                 mail: mail.current.value,
                 password: password.current.value
             }
+            console.log(data)
             axios.post(
-                apiUrl + 'users/signup',
+                apiUrl + "auth/signup",
                 data
-            ), console.log(data)
+            )
         } catch (error) {
             console.log(error)
         }
@@ -36,49 +47,57 @@ export default function FormSignUp() {
                 <img src="https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Road" />
             </div>
             <div className='flex justify-center  absolute inset-0 '>
-                <div className=' w-full max-w-lg pt-[200px] '>
-                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ">
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label ref={name} class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <div className=' w-full max-w-lg pt-14 '>
+                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ">
+                        <div className="flex flex-col items-center justify-center lg:justify-start">
+                            <p className=" text-lg">Sign up with:</p>
+                            <div className='m-6 '>
+                                <button type="button">
+                                    <svg className="w-10 h-10 f  text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
+                                        <path fillRule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clipRule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+                            <p class="mx-4 mb-0 text-center font-semibold dark:text-black">
+                                Or
+                            </p>
+                        </div>
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                                     First Name
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane"></input>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                <input ref={name} type="text" name="name" id='name' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" placeholder="Jane"></input>
+                                <p className="text-red-500 text-xs italic">Please fill out this field.</p>
                             </div>
-                            <div class="w-full md:w-1/2 px-3">
-                                <label ref={lastName} class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                            <div className="w-full md:w-1/2 px-3">
+                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                                     Last Name
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe"></input>
+                                <input ref={lastName} type="text" name="lastName" id='lastName' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="Doe"></input>
                             </div>
                         </div>
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" ref={mail} name="mail" id="mail" >Mail</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="example@mail.com"></input>
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full px-3">
+                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"   >Mail</label>
+                                <input ref={mail} type="text" name="mail" id='mail' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="example@mail.com"></input>
                             </div>
                         </div>
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <label ref={password} class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full px-3">
+                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                                     Password
                                 </label>
+                                <input ref={password} type="password" id='password' name="password" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="******************"></input>
                             </div>
                         </div>
                         <div className='mb-6'>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************"></input>
-                            <p class="text-gray-600 text-xs italic mt-6 mb-2">Please, tell us, where are you from?</p>
-
-                            {/* <div class="">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label ref={country} class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-        Country
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque"></input>
-    </div> */}
-                            <div class="inline-block relative w-64">
-                                <select ref={country} class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <p className="text-gray-600 text-xs italic mt-6 mb-2">Please, tell us, where are you from?</p>
+                            <div className="inline-block relative w-64">
+                                <select ref={country} type="text" name="country" id="country" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                     <option>Country</option>
                                     <option>Argentina</option>
                                     <option>Brasil</option>
@@ -89,44 +108,33 @@ export default function FormSignUp() {
                                     <option >Ecuador</option>
                                     <option >España</option>
                                 </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                                 Please add a photo here
                             </label>
-                            <input ref={photo} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="URL photo" type="text" />
+                            <input ref={photo} type="text" name="photo" id="photo" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="URLphoto" />
                         </div>
                         <div className='flex justify-center mt-6 mb-6'>
                             <input type="button" className='bg-indigo-700 cursor-pointer w-[200px] text-white font-semibold text-xl rounded-md py-4' value="Sign Up!" onClick={handleSignUp} />
                         </div>
-                        <div class="flex justify-center   uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-6">
+                        <div className="flex justify-center   uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-6">
                             <p>Already have an account?</p>
-                            </div>
-                            <div className='flex justify-center '>
+                        </div>
+                        <div className='flex justify-center '>
                             <Anchor to='/nav/auth/login'><button className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'>Sign In</button></Anchor>
-                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+      
+
     )
 }
 
 
-/*  <div className='pt-10'>
-     <form className='flex flex-col  gap-4 items-center bg-zinc-500 pb-3  '>
-         <input className='text-center mt-3' ref={name} type="text" name="name" id="name" placeholder="Type Name" />
-         <input className='text-center' ref={lastName} type="text" name="lastName" id="lastName" placeholder="Type Last Name" />
-         <input className='text-center' ref={country} type="text" name="country" id="country" placeholder="Type Country" />
-         <input className='text-center' ref={photo} type="text" name="photo" id="photo" placeholder="Type Photo" />
-         <input className='text-center' ref={mail} type="text" name="mail" id="mail" placeholder="Type Mail" />
-         <input className='text-center' ref={password} type="password" name="password" id="password" placeholder="Type Password" />
-         <input type="button" className='bg-indigo-700 cursor-pointer w-[200px] text-white py-4' value="Sign Up!" onClick={handleSignUp} />
-         <p>Already have an account?</p>
-         <Anchor to='/nav/auth/login'><button>Sign In</button></Anchor>
-     </form>
- </div> */
