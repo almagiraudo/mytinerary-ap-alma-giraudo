@@ -1,25 +1,26 @@
 import axios from 'axios';
 import { useRef, useState, useEffect } from 'react';
 import apiUrl from '../../apiUrl';
-import { Link as Anchor } from 'react-router-dom'
+import { Link as Anchor, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import user_actions from "../store/actions/users"
+import Swal from 'sweetalert2';
 const { read_users } = user_actions
 
 export default function FormSignUp() {
-    const name = useRef("")
-    const lastName = useRef("")
-    const country = useRef("")
-    const photo = useRef("")
-    const mail = useRef("")
-    const password = useRef("")
-    const [reload, setReload] = useState(false)
-    const dispatch = useDispatch()
+    const name = useRef("");
+    const lastName = useRef("");
+    const country = useRef("");
+    const photo = useRef("");
+    const mail = useRef("");
+    const password = useRef("");
+    const [reload, setReload] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    useEffect(
-        () => { dispatch(read_users()) },
-        [reload]
-    )
+    useEffect(() => {
+        dispatch(read_users());
+    }, [reload]);
 
     async function handleSignUp() {
         try {
@@ -31,18 +32,34 @@ export default function FormSignUp() {
                 mail: mail.current.value,
                 password: password.current.value
             }
-            console.log(data)
-            axios.post(
-                apiUrl + "auth/signup",
-                data
-            )
+            const response = await axios.post(apiUrl + "auth/signup", data);
+            if (response.data) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'User registered',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
+            } else if (response.data?.payload?.messages) {
+                Swal.fire({
+                    title: 'Something went wrong!',
+                    icon: 'error',
+                    html: response.data.payload.messages.map(each => `<p>${each}</p>`).join('')
+                });
+            }
         } catch (error) {
-            console.log(error)
+            console.error("Error during registration:", error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred during registration.',
+                icon: 'error',
+                showConfirmButton: true
+            });
         }
     }
     return (
         <div className='relative pt-5' >
-
             <div className=' bg-image-url w-full  h-full object-fill'>
                 <img src="https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Road" />
             </div>
@@ -77,21 +94,21 @@ export default function FormSignUp() {
                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                                     Last Name
                                 </label>
-                                <input ref={lastName} type="text" name="lastName" id='lastName' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="Doe"></input>
+                                <input ref={lastName} type="text" name="lastName" id='lastName' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Doe"></input>
                             </div>
                         </div>
-                        <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="flex flex-wrap mx-3 mb-6">
                             <div className="w-full px-3">
                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"   >Mail</label>
-                                <input ref={mail} type="text" name="mail" id='mail' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="example@mail.com"></input>
+                                <input ref={mail} type="text" name="mail" id='mail' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="example@mail.com"></input>
                             </div>
                         </div>
-                        <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="flex flex-wrap mx-3 mb-6">
                             <div className="w-full px-3">
                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                                     Password
                                 </label>
-                                <input ref={password} type="password" id='password' name="password" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="******************"></input>
+                                <input ref={password} type="password" id='password' name="password" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="******************"></input>
                             </div>
                         </div>
                         <div className='mb-6'>
@@ -132,9 +149,9 @@ export default function FormSignUp() {
                 </div>
             </div>
         </div>
-      
 
-    )
-}
+
+        )
+    }
 
 

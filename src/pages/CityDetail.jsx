@@ -52,14 +52,14 @@ export default function CityDetail() {
           </div>
         </div>
       </div>
-      <div className="">
+      <div >
         {showImages && (itinerary.map(each =>
           <Itinerary each={each}
             user={each.city_id.admin_id}
           />
         )
         )}
-        {itinerary?.length === 0 && <NoItinerariesCard />}
+        {itinerary?.length === 0 && <NoItinerariesCard/>}
       </div>
       <Anchor to='/nav/cities'><button className="rounded-xl 
         bg-indigo-700 text-white text-xl text-center

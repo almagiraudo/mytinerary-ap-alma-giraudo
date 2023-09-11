@@ -24,20 +24,24 @@ export default function FormSignIn() {
             mail: mail.current.value,
             password: password.current.value
         };
-        try{
-            await dispatch(signin({ data }));
-            const token = localStorage.getItem('token');
-            if(token){
+        let responseDispatch = dispatch(signin({data}))
+        .then(res =>{
+            console.log(res)
+            if(res.payload.token){
                 Swal.fire({
                     icon: 'success',
-                    title: 'Logged in!',
-                    })
-                navigate('/');
+                    title: 'Logged in!'
+                })
+                navigate('/')
+            }else if (res.payload.messages){
+                Swal.fire({
+                    title:'Something went wrong!',
+                    icon: 'error',
+                    html: res.payload.messages.map(each =>`<p>${each}</p>`).join('')
+                })
             }
-        }catch(error){
-            
-            console.error('error during login', error);
-        }
+        })
+        
     }
 
     let user = useSelector(store => store)
