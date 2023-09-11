@@ -1,11 +1,9 @@
 import React from 'react'
-import NoItinerariesCard from './NoItinerariesCard';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import itinerary_actions from '../store/actions/itineraries';
 import { useParams } from 'react-router-dom';
-import store from '../store/store';
-import CityDetail from '../pages/CityDetail';
+import Activity from '../components/Activity'
 import LikeButton from './LikeButton';
 const { read_itineraries } = itinerary_actions
 
@@ -21,7 +19,6 @@ export default function Itinerary({ each, user }) {
             dispatch(read_itineraries({ _id }));
         }, []
     );
-   
     const toggleItinerary = (itineraryId) =>{
         if (expandedItineraryId === itineraryId){
             setExpandedItineraryId(null);
@@ -33,10 +30,7 @@ export default function Itinerary({ each, user }) {
     };
     
     return (
-
-
         <div className="w-full flex justify-center pb-10 pt-10 ">
-
             <div key={each.id} className="img flex flex-col  items-center w-[600px]  bg-opacity-70 shadow-2xl rounded-md bg-transparent  pt-10  gap-[16px] ">
                 <p key={each.id} className="text-center font-bold">{each.name}</p>
                 <div className="">
@@ -66,7 +60,7 @@ export default function Itinerary({ each, user }) {
                             <p> User: {user.name} </p>
                             <img src={user.photo} className=' rounded-full w-[90px] h-[80px] ' />
                         </div>
-                        <div className='flex flex-col'>
+                        <div key={each.id} className='flex flex-col'>
                             <p>Price:</p>
                             <p>{"💵".repeat(each.price)}</p>
                         </div>
@@ -74,11 +68,13 @@ export default function Itinerary({ each, user }) {
                             <p className="text-center">Duration: </p>
                             <p> {each.duration}</p>
                         </div>
-                        <div className='flex  items-start flex-col gap-3' >
+                        <div key={each.id} className='flex  items-start flex-col gap-3' >
                             <p>Hashtags:</p>
                             {each.tags.map(tag =>
                                 <p className="text-center flex-row">{tag}</p>)}
-
+                        </div>
+                        <div className='flex flex-col gap-5'>
+                            <Activity/>
                         </div>
                     </div>
                 )}
@@ -87,19 +83,3 @@ export default function Itinerary({ each, user }) {
         </div>
     )
 }
-
-{/* {showImages && (itinerary.length > 0 ?
-(itinerary.map((each, index) =>
-    <CityDetail
-    admin_id={each.city_id.admin_id.name}
-    photo= {each.city_id.admin_id.photo}
-        src={each.photo}
-        alt={each.city_id}
-        text={each.name}
-        price={each.price}
-        tags={each.tags}
-        duration={each.duration}
-        />)):(
-
-           <h1><em>There are no itineraries to show</em></h1> 
-        ))} */}

@@ -70,7 +70,8 @@ const signout= createAsyncThunk(
             let token = localStorage.getItem('token')
             let authorization = { headers:{'Authorization': `Bearer ${token}` }}
             let data = await axios.post(apiUrl+'auth/signout',null,authorization)
-            localStorage.removeItem('token', data.data.response.token)
+            localStorage.removeItem('token'); 
+            console.log('user logged out')
             return{
                 user:{},
                 token:''

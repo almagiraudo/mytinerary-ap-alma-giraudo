@@ -1,21 +1,43 @@
-import React, { useRef } from 'react'
-import apiUrl from '../../apiUrl'
-import axios from 'axios';
-import { Link as Anchor } from 'react-router-dom'
+import React, { useRef, useEffect } from 'react'
+import { Link as Anchor, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import user_actions from "../store/actions/users"
+import user_actions from "../store/actions/users";
+import Swal from 'sweetalert2';
+
 const { signin } = user_actions
+
 export default function FormSignIn() {
-    const mail = useRef("")
-    const password = useRef("")
-    const dispatch = useDispatch()
+    const mail = useRef("");
+    const password = useRef("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        const token = localStorage.getItem('token');
+        if (token){
+            navigate('/');
+        }
+    },[navigate]);
 
     async function handleSignIn() {
         let data = {
             mail: mail.current.value,
             password: password.current.value
+        };
+        try{
+            await dispatch(signin({ data }));
+            const token = localStorage.getItem('token');
+            if(token){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Logged in!',
+                    })
+                navigate('/');
+            }
+        }catch(error){
+            
+            console.error('error during login', error);
         }
-        dispatch(signin({ data }));
     }
 
     let user = useSelector(store => store)
@@ -68,7 +90,7 @@ export default function FormSignIn() {
 
                         </div>
                         <div className="flex items-center justify-between">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleSignIn}>
+                            <button  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleSignIn}>
                                 Sign In
                             </button>
                             <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
