@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 # React + Vite
+Esta página fue realizada con React.js y Node.js.
+Se trata de un proyecto web que muestra un desarrollo realizado para una página turistica que ofrece diferentes itinerarios para cada ciudad.
+Es una página completa en donde puedes ingresar con usuario y regisstrarte, cuenta con la seguirdad necesaria y con la base de datos que alojará toda la información que se precise.
+En el siguiente Link podras acceder al proyecto terminado:
+https://mytinerary-ap-alma-giraudo-oiwn.vercel.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
 # mytinerary-ap-giraudo
 >>>>>>> 428ac924e321709458e90b2cc7e08f9965181e37
