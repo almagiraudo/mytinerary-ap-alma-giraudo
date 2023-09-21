@@ -1,15 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState,useRef, useEffect } from 'react'
+import like_actions from '../store/actions/likes';
+import { useDispatch, useSelector } from 'react-redux';
+
+const{read_likes, create_likes} = like_actions
+
 
 export default function LikeButton() {
     const [likes, setLikes] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
+    const dispatch = useDispatch ();
+    const likesCount = useSelector(state=> state.likes.likesCount)
 
-    const toggleLike = () => {
-        if (isLiked) {
-            setLikes(likes - 1);
-        } else {
-            setLikes(likes + 1);
-        } setIsLiked(!isLiked)
+    useEffect(() => {
+        dispatch(read_likes())
+    }, [dispatch]);
+
+   /*  useEffect(()=>{
+        setLikes(likesCount);
+        console.log(likesCount)
+    },[likesCount]); */
+
+    const toggleLike = async() => {
+        try {
+            await dispatch(create_likes(user_id))
+        } catch (error) {
+            console.log('error al dar like:', error)
+            
+        }
     }
 
     return (
@@ -33,3 +50,11 @@ export default function LikeButton() {
         </div>
     );
 }
+/* const user = useRef("")
+const likes = useRef()
+async function handleLike(){
+    let data = {
+        user: user.current.value,
+        likes: likes.current.value
+    }
+} */

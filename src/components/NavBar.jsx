@@ -22,7 +22,7 @@ export default function NavBar() {
         }
     };
 
-    
+    const isRegistered = localStorage.getItem("user") ? true : false;
     const isLoggedIn = localStorage.getItem("token") ? true : false;
 
     return (
