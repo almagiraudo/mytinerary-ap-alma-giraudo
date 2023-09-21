@@ -34,8 +34,8 @@ export default function Cities(props) {
           ref={text} onKeyUp={handleFilter}
           type="search" id="default-search"
           placeholder="search for your destiny"
-          className="flex border-solid w-[300px] h-10 text-center object-center
-          border-slate-500 bg-slate-300 rounded-lg  "
+          className="flex border-solid w-[400px] h-10 text-center  object-center
+          border-slate-600 bg-slate-200 rounded-lg  "
 
         />
       </div>

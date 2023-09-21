@@ -15,7 +15,7 @@ export default function HambMenu() {
 
      <Anchor to='/' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Home</Anchor>
      <Anchor to='/nav/cities' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Cities</Anchor>
-     <Anchor to='/nav/login' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</Anchor>
+     <Anchor to='/nav/auth/login' className="bg-white rounded-lg w-[100px] text-center mx-1 text-[20px] px-2  ">Singin</Anchor>
 
     </div>)
     :(null)
